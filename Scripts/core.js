@@ -51,7 +51,7 @@ function Ball(){
         field.save();
         field.translate(this.x, this.y);
         field.rotate(this.rotate);
-        field.drawImage(options.ball, -this.r,-this.r);
+        field.drawImage(options.ball, -this.r,-this.r,60,60);
         field.restore();
         field.fillStyle="#000000";
         field.fillRect(this.x -5, 0, 10, 5);
@@ -109,7 +109,7 @@ function init(){
   options.background = new Image();
   options.background.src = "Images/background.png";
   options.ball = new Image();
-  options.ball.src = "Images/ball.png";
+  options.ball.src = "Images/ball01.png";
   options.gameStarted = false;
   net = Object();
   //ball = Object();
