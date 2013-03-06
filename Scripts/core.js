@@ -16,6 +16,17 @@ function Circle(x, y, r, color){
   this.px = x;
   this.py = y;
   this.color = color;
+  this.drawShadow = function(){
+          field.save();
+          field.fillStyle="#444444";
+          field.beginPath();
+          field.scale(2,1);
+          field.arc(this.x/2, field.canvas.height-this.r,Math.max(10,this.r*(field.canvas.height-this.y)/800),  0,Math.PI*2);
+          field.fill();
+          //field.stroke();
+          field.closePath();
+          field.restore();
+  }
   this.redraw = function(){
       field.fillStyle = this.color;
       field.beginPath();
@@ -50,7 +61,7 @@ function Ball(){
         field.fillStyle="#444444";
         field.beginPath();
         field.scale(2,1);
-        field.arc(this.x/2, field.canvas.height-this.r,this.r*(field.canvas.height-this.y)/500,  0,Math.PI*2);
+        field.arc(this.x/2, field.canvas.height-this.r,Math.max(10,this.r*(field.canvas.height-this.y)/800),  0,Math.PI*2);
         field.fill();
         //field.stroke();
         field.closePath();
@@ -71,6 +82,10 @@ function PlayerClass(x, y, color){
     this.jumping = false;
     this.top = new Circle(x, y - options.jelly.bot.r, options.jelly.top.r, color);
     this.bot = new Circle(x, y, options.jelly.bot.r, color);
+    this.drawShadow = function(){
+      this.bot.drawShadow();
+      this.top.drawShadow();
+    }
     this.redraw = function (){
         this.bot.redraw();
         this.top.redraw();

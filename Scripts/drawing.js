@@ -41,6 +41,8 @@ function redraw(){
     field.fillRect(0,0,1000,1000);
     field.drawImage(options.background, 0, 0);
     ball.drawShadow();
+    //left_player.drawShadow();
+    //right_player.drawShadow();
     drawNet();
     left_player.redraw();
     right_player.redraw();
